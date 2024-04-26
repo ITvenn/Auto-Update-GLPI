@@ -56,4 +56,4 @@ Pour toute question ou problème, n'hésitez pas à soumettre une issue sur le d
 
 ```
 
-Ce README offre une base solide que tu peux personnaliser selon les spécificités de ton environnement ou tes préférences personnelles. Assure-toi de tester le script dans un environnement de développement ou de test avant de l'exécuter en production pour éviter tout impact inattendu.
+Ce script offre une base solide que tu peux personnaliser selon les spécificités de ton environnement ou tes préférences personnelles. Assure-toi de tester le script dans un environnement de développement ou de test avant de l'exécuter en production pour éviter tout impact inattendu.
