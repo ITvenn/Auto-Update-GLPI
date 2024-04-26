@@ -1,7 +1,11 @@
 #!/bin/sh
-# Sécurité : n'active pas le script si le repertoir config est présent dans le mauvais répertoire
-if [ -d "/var/www/glpi/config" ]; then
+# Sécurité : n'active pas le script si le repertoir config ou glpi est présent dans le mauvais répertoire
+if [ -d "/var/www/html/glpi/config" ]; then
     echo "Erreur : le répertoire /var/www/glpi/config existe."
+    exit 1
+fi
+if [ -d "/var/www/glpi" ]; then
+    echo "Erreur : le répertoire /var/www/glpi existe."
     exit 1
 fi
 
