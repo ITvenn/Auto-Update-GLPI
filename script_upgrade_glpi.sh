@@ -4,7 +4,7 @@
 # Auteur : HAMEL Vincent
 #
 # Description :
-# Ce script permet la mise à jour de GLPI 
+# Script de mise à jour automatique de GLPI vers la version souhaitée.
 #
 # --------------------------------------------------------------------------------
 
