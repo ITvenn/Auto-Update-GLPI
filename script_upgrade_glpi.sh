@@ -1,4 +1,13 @@
 #!/bin/sh
+
+# --------------------------------------------------------------------------------
+# Auteur : HAMEL Vincent
+#
+# Description :
+# Ce script permet la mise à jour de GLPI 
+#
+# --------------------------------------------------------------------------------
+
 # Sécurité : n'active pas le script si le repertoir config ou glpi est présent dans le mauvais répertoire
 if [ -d "/var/www/html/glpi/config" ]; then
     echo "Erreur : le répertoire /var/www/glpi/config existe."
