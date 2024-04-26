@@ -1,4 +1,4 @@
-# Script de mise à jour automatique de GLPI vers la version dernière version.
+# Script de mise à jour automatique de GLPI vers la version souhaitée.
 
 Ce script automatise le processus de mise à jour de GLPI à la dernière version stable. Il gère la sauvegarde des composants essentiels et l'installation de la nouvelle version sans intervention manuelle.
 
