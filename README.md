@@ -21,14 +21,14 @@ Ce script automatise le processus de mise à jour de GLPI à la dernière versio
 1. Téléchargez le script sur votre serveur où GLPI est installé.
 2. Assurez-vous que le script est exécutable :
    ```bash
-   chmod +x script_upgrade_glpi_10.0.X.sh
+   chmod +x script_upgrade_glpi.sh
    ```
 
 ## Utilisation
 
 Pour lancer la mise à jour de GLPI, exécutez simplement le script :
 ```bash
-./script_upgrade_glpi_10.0.X.sh
+./script_upgrade_glpi.sh
 ```
 
 Le script effectuera les opérations suivantes :
