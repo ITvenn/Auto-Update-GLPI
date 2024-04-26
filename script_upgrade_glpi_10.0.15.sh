@@ -5,7 +5,7 @@ if [ -d "/var/www/glpi/config" ]; then
     exit 1
 fi
 
-# Choix de la version souhaité 
+# Choix de la version souhaité
 echo -n "Veuillez entrer le numero de version GLPI souhaité dans le format suivant X.X.X"
 read version
 echo
@@ -17,10 +17,11 @@ if [ "$reponse" = "o" ]; then
     # Sauvegarde de la base de données
     echo "Sauvegarde de la base de données ..."
     echo -n "Entrez le nom de la base de données à sauvegarder: "
+    echo
     read database_name
     echo -n "Entrez le mot de passe MySQL pour l'utilisateur 'root': "
-    read -s password
     echo
+    read -s password
     mysqldump -u root -p$password --databases "$database_name" > "/tmp/backup_${database_name}_glpi.sql" && echo "La sauvegarde de la base de données '$database_name' a été créée avec succès dans /tmp." || { echo "Erreur : échec de la sauvegarde de la base de données."; exit 1; }
 
     # Sauvegarde du répertoire plugins
@@ -37,13 +38,12 @@ if [ "$reponse" = "o" ]; then
 
     # Télécharger le dernier package GLPI depuis le dépôt officiel
     cd /var/www/html
+    mv /var/www/html/glpi /tmp/glpi-bkp-$(date +%Y%m%d)
     echo "Téléchargement du répertoire glpi à jour..."
     wget https://github.com/glpi-project/glpi/releases/download/${version}/glpi-${version}.tgz && echo "Téléchargement réussi !" || { echo "Erreur : échec du téléchargement."; exit 1; }
     echo "Décompression du répertoire GLPI..."
     tar xvzf glpi-${version}.tgz && echo "Décompression réussie !" || { echo "Erreur : échec de la décompression."; exit 1; }
     rm -r glpi-${version}.tgz
-    mv /var/www/html/glpi /tmp/glpi-bkp-$(date +%Y%m%d)
-    mv /var/www/html/glpi-* /var/www/html/glpi
 
     # Copier les fichiers sauvegardés depuis le répertoire temporaire
     cd /var/www/html/glpi
@@ -53,8 +53,8 @@ if [ "$reponse" = "o" ]; then
     rm -r config
     echo "Déplacement des fichiers sauvegardés dans le répertoire GLPI..."
     cp /tmp/downstream.php /var/www/html/glpi/inc/ && echo "Copie du fichier downstream.php réussi !" || { echo "Erreur : échec de la copie du fichier downstream.php."; exit 1; }
-    cp /tmp/plugins /var/www/html/glpi/ && echo "Copie du répertoire plugins réussi !" || { echo "Erreur : échec de la copie du répertoire plugins."; exit 1; }
-    cp /tmp/marketplace /var/www/html/glpi/ && echo "Copie du répertoire marketplace réussi !" || { echo "Erreur : échec de la copie du répertoire marketplace."; exit 1; }
+    cp -r /tmp/plugins /var/www/html/glpi/ && echo "Copie du répertoire plugins réussi !" || { echo "Erreur : échec de la copie du répertoire plugins."; exit 1; }
+    cp -r /tmp/marketplace /var/www/html/glpi/ && echo "Copie du répertoire marketplace réussi !" || { echo "Erreur : échec de la copie du répertoire marketplace."; exit 1; }
 
     # Redémarrer le serveur Apache pour appliquer les changements
     echo "Redémarrage de GLPI..."
@@ -64,5 +64,3 @@ else
     echo "Mise à jour annulée."
     exit 1  # Quitte le script si l'utilisateur répond "non"
 fi
-
-
