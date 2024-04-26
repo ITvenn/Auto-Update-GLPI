@@ -1,4 +1,18 @@
 #!/bin/sh
+echo "Sauvegarde de la base de données ..."
+
+# Demande à l'utilisateur le nom de la base de données
+echo -n "Entrez le nom de la base de données à sauvegarder: "
+read database_name
+
+# Demande à l'utilisateur de saisir le mot de passe de manière sécurisée
+echo -n "Entrez le mot de passe MySQL pour l'utilisateur 'root': "
+read -s password
+echo
+
+# Exécute la commande mysqldump pour sauvegarder la base de données spécifiée
+mysqldump -u root -p$password --databases "$database_name" > "/home/glpi_adm/backup_${database_name}_glpi.sql" && echo "La sauvegarde de la base de données '$database_name' a été créée avec succès."
+
 echo "Sauvegarde du répertoire plugins dans /tmp..."
 mv /var/www/html/glpi/plugins /tmp/ && echo "Sauvegarde du répertoire plugins réussie !"
 echo "Sauvegarde du répertoire marketplace dans /tmp..."
