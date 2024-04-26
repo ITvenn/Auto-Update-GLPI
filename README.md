@@ -11,10 +11,10 @@ Ce script automatise le processus de mise à jour de GLPI à la dernière versio
 ## Prérequis
 
 - Un serveur web avec GLPI déjà installé.
+- Répertoire GLPI dans /var/www/html/glpi sinon adapter le script à votre répertoire
 - Accès SSH au serveur.
 - Droits d'administrateur ou de superutilisateur.
 - wget et tar installés sur le serveur.
-- Testé sur serveur Debian
 
 ## Installation
 
