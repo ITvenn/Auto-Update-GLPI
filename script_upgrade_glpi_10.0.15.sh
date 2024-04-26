@@ -26,7 +26,7 @@ if [ "$reponse" = "o" ]; then
     echo -n "Entrez le mot de passe MySQL pour l'utilisateur 'root': "
     echo
     read -s password
-    mysqldump -u root -p$password --databases "$database_name" > "/tmp/backup_${database_name}_glpi.sql" && echo "La sauvegarde de la base de données '$database_name' a été créée avec succès dans /tmp." || { echo "Erreur : échec de la sauvegarde de la base de données."; exit 1; }
+    mysqldump -u root -p$password --databases "$database_name" > "/tmp/backup_${database_name}.sql" && echo "La sauvegarde de la base de données '$database_name' a été créée avec succès dans /tmp." || { echo "Erreur : échec de la sauvegarde de la base de données."; exit 1; }
 
     # Sauvegarde du répertoire plugins
     echo "Sauvegarde du répertoire plugins dans /tmp..."
