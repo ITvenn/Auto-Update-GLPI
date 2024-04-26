@@ -11,7 +11,7 @@ read -s password
 echo
 
 # Exécute la commande mysqldump pour sauvegarder la base de données spécifiée
-mysqldump -u root -p$password --databases "$database_name" > "/home/glpi_adm/backup_${database_name}_glpi.sql" && echo "La sauvegarde de la base de données '$database_name' a été créée avec succès."
+mysqldump -u root -p$password --databases "$database_name" > "/tmp/backup_${database_name}_glpi.sql" && echo "La sauvegarde de la base de données '$database_name' a été créée avec succès dans /tmp."
 
 echo "Sauvegarde du répertoire plugins dans /tmp..."
 mv /var/www/html/glpi/plugins /tmp/ && echo "Sauvegarde du répertoire plugins réussie !"
