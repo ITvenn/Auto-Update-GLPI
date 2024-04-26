@@ -1,6 +1,6 @@
-# Script de mise à jour automatique de GLPI vers la version 10.0.15
+# Script de mise à jour automatique de GLPI vers la version dernière version.
 
-Ce script automatise le processus de mise à jour de GLPI à la dernière version stable, 10.0.15. Il gère la sauvegarde des composants essentiels et l'installation de la nouvelle version sans intervention manuelle.
+Ce script automatise le processus de mise à jour de GLPI à la dernière version stable. Il gère la sauvegarde des composants essentiels et l'installation de la nouvelle version sans intervention manuelle.
 
 ## Fonctionnalités
 
@@ -20,14 +20,14 @@ Ce script automatise le processus de mise à jour de GLPI à la dernière versio
 1. Téléchargez le script sur votre serveur où GLPI est installé.
 2. Assurez-vous que le script est exécutable :
    ```bash
-   chmod +x script_upgrade_glpi_10.0.15.sh
+   chmod +x script_upgrade_glpi_10.0.X.sh
    ```
 
 ## Utilisation
 
 Pour lancer la mise à jour de GLPI, exécutez simplement le script :
 ```bash
-./script_upgrade_glpi_10.0.15.sh
+./script_upgrade_glpi_10.0.X.sh
 ```
 
 Le script effectuera les opérations suivantes :
