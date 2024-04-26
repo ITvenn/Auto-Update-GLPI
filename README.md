@@ -14,6 +14,7 @@ Ce script automatise le processus de mise à jour de GLPI à la dernière versio
 - Accès SSH au serveur.
 - Droits d'administrateur ou de superutilisateur.
 - wget et tar installés sur le serveur.
+- Testé sur serveur Debian
 
 ## Installation
 
