@@ -8,6 +8,9 @@
 #
 # --------------------------------------------------------------------------------
 
+# Récuperation du chemin ou est executer le script
+chemin=$(pwd);
+
 # Sécurité : n'active pas le script si le repertoir config ou glpi est présent dans le mauvais répertoire
 if [ -d "/var/www/html/glpi/config" ]; then
     echo -e "\E[31mErreur : le répertoire /var/www/html/glpi/config existe."
@@ -77,6 +80,8 @@ if [ "$reponse" = "o" ]; then
     echo "Redémarrage de GLPI..."
     systemctl restart apache2 && echo "GLPI est maintenant à jour et en ligne !" || { echo -e "\E[31mErreur : échec du redémarrage de GLPI."; exit 1; }
 
+    # Sécurité Suppression du script upgrade
+    rm $chemin/script_upgrade_glpi.sh && echo "Suppression du script upgrade !" || { echo -e "\E[31mErreur : échec suppression du script upgrade."; exit 1; }
 
 else
     echo "Mise à jour annulée."
