@@ -10,7 +10,7 @@
 
 # Sécurité : n'active pas le script si le repertoir config ou glpi est présent dans le mauvais répertoire
 if [ -d "/var/www/html/glpi/config" ]; then
-    echo -e "\E[31mErreur : le répertoire /var/www/glpi/config existe."
+    echo -e "\E[31mErreur : le répertoire /var/www/html/glpi/config existe."
     exit 1
 fi
 if [ -d "/var/www/glpi" ]; then
@@ -69,9 +69,14 @@ if [ "$reponse" = "o" ]; then
     cp -r /tmp/plugins /var/www/html/glpi/ && echo "Copie du répertoire plugins réussi !" || { echo -e "\E[31mErreur : échec de la copie du répertoire plugins."; exit 1; }
     cp -r /tmp/marketplace /var/www/html/glpi/ && echo "Copie du répertoire marketplace réussi !" || { echo -e "\E[31mErreur : échec de la copie du répertoire marketplace."; exit 1; }
 
+    # Ajout des droits à Apache
+    chown -R www:data www:data /var/www/html/glpi
+    chmod -R 664 /var/www/html/glpi
+
     # Redémarrer le serveur Apache pour appliquer les changements
     echo "Redémarrage de GLPI..."
     systemctl restart apache2 && echo "GLPI est maintenant à jour et en ligne !" || { echo -e "\E[31mErreur : échec du redémarrage de GLPI."; exit 1; }
+
 
 else
     echo "Mise à jour annulée."
