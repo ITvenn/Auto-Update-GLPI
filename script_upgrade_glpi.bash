@@ -84,7 +84,7 @@ if [ "$reponse" = "o" ]; then
     systemctl restart apache2 && echo "GLPI est maintenant à jour et en ligne !" || { echo -e "\E[31mErreur : échec du redémarrage de GLPI.\E[0m"; exit 1; }
 
     # Sécurité Suppression du script upgrade
-    rm $chemin/script_upgrade_glpi.sh && echo "Suppression du script upgrade !" || { echo -e "\E[31mErreur : échec suppression du script upgrade.\E[0m"; exit 1; }
+    rm $chemin/script_upgrade_glpi.bash && echo "Suppression du script upgrade !" || { echo -e "\E[31mErreur : échec suppression du script upgrade.\E[0m"; exit 1; }
 
 else
     echo "Mise à jour annulée."
