@@ -1,10 +1,11 @@
 # Script de mise à jour automatique de GLPI vers la version souhaitée.
 
-Ce script automatise le processus de mise à jour de GLPI à la dernière version stable. Il gère la sauvegarde des composants essentiels et l'installation de la nouvelle version.
+Ce script automatise le processus de mise à jour de GLPI à la version souhaitée. Il gère la sauvegarde des composants essentiels (Base de données) et l'installation vers la version sélectionnée.
 
 ## Fonctionnalités
 
 - Sauvegarde automatique des plugins, du marché et des configurations.
+- Sauvegarde de la base de données
 - Téléchargement et installation de la nouvelle version de GLPI.
 - Restauration des fichiers sauvegardés et redémarrage du service Apache.
 
@@ -21,22 +22,24 @@ Ce script automatise le processus de mise à jour de GLPI à la dernière versio
 1. Téléchargez le script sur votre serveur où GLPI est installé.
 2. Assurez-vous que le script est exécutable :
    ```bash
-   chmod +x script_upgrade_glpi.sh
+   chmod +x script_upgrade_glpi.bash
    ```
 
 ## Utilisation
 
 Pour lancer la mise à jour de GLPI, exécutez simplement le script :
 ```bash
-./script_upgrade_glpi.sh
+./script_upgrade_glpi.bash
 ```
 
 Le script effectuera les opérations suivantes :
 - Sauvegarde des répertoires `plugins` et `marketplace`, ainsi que du fichier `downstream.php`.
+- Sauvegarde de la base de données
 - Téléchargement et extraction de la nouvelle version de GLPI.
 - Suppression des anciens répertoires de GLPI et remplacement par les nouveaux.
 - Restauration des fichiers sauvegardés.
 - Redémarrage d'Apache pour appliquer les changements.
+- Suppression du script.
 
 ## Sécurité
 
@@ -53,7 +56,5 @@ Ce projet est distribué sous la licence MIT, permettant une utilisation libre d
 ## Support
 
 Pour toute question ou problème, n'hésitez pas à soumettre une issue sur le dépôt GitHub du projet.
-
-```
 
 Ce script offre une base solide que tu peux personnaliser selon les spécificités de ton environnement ou tes préférences personnelles. Assure-toi de tester le script dans un environnement de développement ou de test avant de l'exécuter en production pour éviter tout impact inattendu.
