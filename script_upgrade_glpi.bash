@@ -76,8 +76,8 @@ if [ "$reponse" = "o" ]; then
     # Ajout des droits à Apache
     chown www-data:www-data -R /var/www/html/glpi/plugins
     chown www-data:www-data -R /var/www/html/glpi/marketplace
-    chmod 664 -R /var/www/html/glpi/plugins
-    chmod 664 -R /var/www/html/glpi/marketplace
+    chmod 764 -R /var/www/html/glpi/plugins
+    chmod 764 -R /var/www/html/glpi/marketplace
 
     # Redémarrer le serveur Apache pour appliquer les changements
     echo "Redémarrage de GLPI..."
