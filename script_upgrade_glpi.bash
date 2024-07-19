@@ -74,10 +74,10 @@ if [ "$reponse" = "o" ]; then
     cp -r /tmp/marketplace /var/www/html/glpi/ && echo "Copie du répertoire marketplace réussi !" || { echo -e "\E[31mErreur : échec de la copie du répertoire marketplace.\E[0m"; exit 1; }
 
     # Ajout des droits à Apache
-    chown -R www-data:www-data /var/www/html/glpi/plugins
-    chown -R www-data:www-data /var/www/html/glpi/marketplace
-    chmod -R 664 /var/www/html/glpi/plugins
-    chmod -R 664 /var/www/html/glpi/marketplace
+    chown www-data:www-data -R /var/www/html/glpi/plugins
+    chown www-data:www-data -R /var/www/html/glpi/marketplace
+    chmod 664 -R /var/www/html/glpi/plugins
+    chmod 664 -R /var/www/html/glpi/marketplace
 
     # Redémarrer le serveur Apache pour appliquer les changements
     echo "Redémarrage de GLPI..."
