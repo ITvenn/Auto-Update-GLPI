@@ -8,10 +8,10 @@
 #
 # --------------------------------------------------------------------------------
 
-# Récuperation du chemin ou est executer le script
+# Récupération du chemin où est exécuté le script
 chemin=$(pwd);
 
-# Sécurité : n'active pas le script si le repertoir config ou glpi est présent dans le mauvais répertoire
+# Sécurité : n'active pas le script si le répertoire config ou glpi est présent dans le mauvais répertoire
 if [ -d "/var/www/html/glpi/config" ]; then
     echo -e "\E[31mErreur : le répertoire /var/www/html/glpi/config existe.\E[0m"
     exit 1
@@ -21,8 +21,8 @@ if [ -d "/var/www/glpi" ]; then
     exit 1
 fi
 
-# Choix de la version souhaité
-echo -n "Veuillez entrer le numero de version GLPI souhaité dans le format suivant X.X.X"
+# Choix de la version souhaitée
+echo -n "Veuillez entrer le numéro de version GLPI souhaité dans le format suivant X.X.X"
 read version
 echo
 echo "Voulez-vous vraiment passer à la version ${version} de GLPI ? (o/n)"
@@ -32,10 +32,10 @@ if [ "$reponse" = "o" ]; then
 
     # Sauvegarde de la base de données
     echo "Sauvegarde de la base de données ..."
-    echo -n "Entrez le nom de la base de données à sauvegarder: "
+    echo -n "Entrez le nom de la base de données à sauvegarder : "
     echo
     read database_name
-    echo -n "Entrez le mot de passe MySQL pour l'utilisateur 'root': "
+    echo -n "Entrez le mot de passe MySQL pour l'utilisateur 'root' : "
     echo
     read -s password
     # Dump mysql dans /tmp
@@ -69,9 +69,9 @@ if [ "$reponse" = "o" ]; then
     rm -r marketplace
     rm -r config
     echo "Déplacement des fichiers sauvegardés dans le répertoire GLPI..."
-    cp /tmp/downstream.php /var/www/html/glpi/inc/ && echo "Copie du fichier downstream.php réussi !" || { echo -e "\E[31mErreur : échec de la copie du fichier downstream.php.\E[0m"; exit 1; }
-    cp -r /tmp/plugins /var/www/html/glpi/ && echo "Copie du répertoire plugins réussi !" || { echo -e "\E[31mErreur : échec de la copie du répertoire plugins.\E[0m"; exit 1; }
-    cp -r /tmp/marketplace /var/www/html/glpi/ && echo "Copie du répertoire marketplace réussi !" || { echo -e "\E[31mErreur : échec de la copie du répertoire marketplace.\E[0m"; exit 1; }
+    cp /tmp/downstream.php /var/www/html/glpi/inc/ && echo "Copie du fichier downstream.php réussie !" || { echo -e "\E[31mErreur : échec de la copie du fichier downstream.php.\E[0m"; exit 1; }
+    cp -r /tmp/plugins /var/www/html/glpi/ && echo "Copie du répertoire plugins réussie !" || { echo -e "\E[31mErreur : échec de la copie du répertoire plugins.\E[0m"; exit 1; }
+    cp -r /tmp/marketplace /var/www/html/glpi/ && echo "Copie du répertoire marketplace réussie !" || { echo -e "\E[31mErreur : échec de la copie du répertoire marketplace.\E[0m"; exit 1; }
 
     # Ajout des droits à Apache
     chown www-data:www-data -R /var/www/html/glpi/plugins
