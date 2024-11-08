@@ -29,7 +29,17 @@ echo "Voulez-vous vraiment passer à la version ${version} de GLPI ? (o/n)"
 read reponse
 if [ "$reponse" = "o" ]; then
     echo "Mise à jour vers la version ${version}..."
-
+    # Prérequis bon fonctionnement du script
+    if [ -d "/tmp/plugins" ]; then
+        rm -r /tmp/plugins
+    fi
+    if [ -d "/tmp/marketplace" ]; then
+        rm -r /tmp/marketplace
+    fi
+    if [ -d "/tmp/downstream.php" ]; then
+        rm /tmp/downstream.php
+    fi
+    
     # Sauvegarde de la base de données
     echo "Sauvegarde de la base de données ..."
     echo -n "Entrez le nom de la base de données à sauvegarder : "
